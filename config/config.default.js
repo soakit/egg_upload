@@ -46,6 +46,7 @@ module.exports = appInfo => {
       '.docx',
       '.txt',
       '.DS_Store',
+      '.html',
     ],
   };
 

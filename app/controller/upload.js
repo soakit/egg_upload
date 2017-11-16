@@ -53,7 +53,7 @@ module.exports = app =>
       const { to, type = 'file' } = stream.fields;
       const dest = path.normalize(decodeURIComponent(to));
       const filename = decodeURIComponent(stream.filename);
-      if (!dest || !dest.startsWith(this.config.secPath)) {
+      if (!dest || !path.normalize(dest).startsWith(path.normalize(this.config.secPath))) {
         this.logger.error(
           `Form field 'to'=[${dest}] is not valid while upload file: ${filename}`
         );

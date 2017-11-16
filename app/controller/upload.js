@@ -40,7 +40,7 @@ module.exports = app =>
     /**
      * hello world
      */
-    * upload() {
+    *upload() {
       let stream;
       try {
         stream = yield this.ctx.getFileStream();
@@ -66,7 +66,7 @@ module.exports = app =>
         : yield this.handleSingleFile(filename, stream, dest);
     }
 
-    * handleZipFile(filename, stream, dest) {
+    *handleZipFile(filename, stream, dest) {
       this.logger.info(`Handling zipfile  [${filename}] to [${dest}]`);
 
       // 必须先将zip文件保存到临时目录再执行删除旧文件的操作, 因为保存这一步可能失败, 导致旧文件被删除了
@@ -118,7 +118,7 @@ module.exports = app =>
       }
     }
 
-    * handleSingleFile(filename, stream, dest) {
+    *handleSingleFile(filename, stream, dest) {
       this.logger.info(`Handling file [${filename}] to [${dest}]`);
       try {
         const stats = yield fs.stat(dest);
@@ -142,14 +142,5 @@ module.exports = app =>
         this.ctx.body = `Save stream to dest failed, err: ${err.message}`;
         yield sendToWormhole(stream);
       }
-    }
-
-    * form() {
-      this.ctx.body = `<form method="post" enctype="multipart/form-data" action="/upload?_csrf=${this
-        .csrf}">
-    <p>Title: <input type="text" name="title" /></p>
-    <p>Image: <input type="file" name="image" /></p>
-    <p><input type="submit" value="Upload" /></p>
-    </form>`;
     }
   };

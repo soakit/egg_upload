@@ -1,10 +1,15 @@
 # egg_upload
 
-egg project
+A upload service build by eggjs.
 
 ## QuickStart
+config/config.default.js
 
-<!-- add docs here for user -->
+```bash
+secPath                   设置可上传的上级路径
+multipart
+    |-- fileExtensions    设置可上传的文件后缀
+```
 
 see [egg docs][egg] for more detail.
 

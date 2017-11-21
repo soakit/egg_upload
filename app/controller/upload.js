@@ -37,9 +37,6 @@ function saveStream(stream, filepath) {
 
 module.exports = app =>
   class UploadController extends app.Controller {
-    /**
-     * hello world
-     */
     *upload() {
       let stream;
       try {
